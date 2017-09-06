@@ -1,13 +1,13 @@
 var React = require("react");
 var Link = require("react-router").Link;
-var Saved = React.createClass({
+var Results = React.createClass({
 	render: function() {
 		return (
 			<div className="container">
 				<div className="col-lg-12">
           <div className="panel panel-primary">
             <div className="panel-heading">
-              <h3 className="panel-title">Saved Articles</h3>
+              <h3 className="panel-title">Results</h3>
             </div>
 	          <div className="panel-body">
 	          </div>
@@ -18,4 +18,4 @@ var Saved = React.createClass({
 	}
 });
 
-module.exports = Saved;
+module.exports = Results;
