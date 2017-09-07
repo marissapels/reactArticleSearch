@@ -5,7 +5,7 @@ var logger = require("morgan");
 var mongoose = require("mongoose");
 
 // Require History Schema
-// var History = require("./models/History");
+var Article = require("./models/Article");
 
 // Create Instance of Express
 var app = express();
@@ -37,7 +37,40 @@ db.once("open", function() {
 
 // -------------------------------------------------
 
+app.get("/", function(req, res) {
+  res.sendFile(__dirname + "/public/index.html");
+});
 
+// app.get("/api", function(req, res) {
+
+//   // We will find all the records, sort it in descending order, then limit the records to 5
+//   Article.find({}).limit(5).exec(function(err, doc) {
+//     if (err) {
+//       console.log(err);
+//     }
+//     else {
+//       res.send(doc);
+//     }
+//   });
+// });
+
+// app.post("/api", function(req, res) {
+//   console.log("BODY: " + req.body.location);
+
+//   // Here we'll save the location based on the JSON input.
+//   // We'll use Date.now() to always get the current date time
+//   Article.create({
+//     location: req.body.location,
+//     date: Date.now()
+//   }, function(err) {
+//     if (err) {
+//       console.log(err);
+//     }
+//     else {
+//       res.send("Saved Search");
+//     }
+//   });
+// });
 
 
 // -------------------------------------------------

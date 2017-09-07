@@ -1,5 +1,4 @@
 var React = require("react");
-var Link = require("react-router").Link;
 var Search = React.createClass({
 	getInitialState: function() {
     return { topic: "", begin: "", end: ""};
@@ -8,11 +7,12 @@ var Search = React.createClass({
   	var newState={};
   	newState[event.target.id]=event.target.value;
     this.setState(newState);
+   // this.setState({ topic: event.target.value });
   },
   handleSubmit: function(event) {
   	event.preventDefault();
-  	this.props.setTerm(this.state.topic);
-    this.setState({ topic: "", begin: "", end: "" });
+  	this.props.setTerm(this.state.topic, this.state.begin, this.state.end);
+    this.setState({ topic: "", begin: "", end: ""});
   },
 	render: function() {
 		return (
@@ -36,8 +36,7 @@ var Search = React.createClass({
 	                onChange={this.handleChange}
 	                required
 	              />
-	            </div>
-	            <div className="form-group">
+	              <br />
 	              <h4 className="">
 	                <strong>Start Year</strong>
 	              </h4>
@@ -49,8 +48,7 @@ var Search = React.createClass({
 	                onChange={this.handleChange}
 	                required
 	              />
-	            </div>
-	            <div className="form-group">
+	              <br />
 	              <h4 className="">
 	                <strong>End Year</strong>
 	              </h4>
@@ -62,8 +60,9 @@ var Search = React.createClass({
 	                onChange={this.handleChange}
 	                required
 	              />
+	              <br />
+	            	<button className="btn btn-primary" type="submit">Submit</button>
 	            </div>
-	            <button className="btn btn-primary" type="submit">Submit</button>
 	            </form>
 	          </div>
 	        </div>
