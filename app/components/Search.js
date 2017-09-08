@@ -11,7 +11,7 @@ var Search = React.createClass({
   },
   handleSubmit: function(event) {
   	event.preventDefault();
-  	this.props.setTerm(this.state.topic, this.state.begin, this.state.end);
+  	this.props.setSearch(this.state.topic, this.state.begin, this.state.end);
     this.setState({ topic: "", begin: "", end: ""});
   },
 	render: function() {

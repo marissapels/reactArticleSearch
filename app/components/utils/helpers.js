@@ -9,6 +9,9 @@ var helper ={
 		console.log(queryURL);
 		return axios.get(queryURL).then(function(response){
 			console.log(response);
+			var result=response.data.response.docs
+			console.log("RESULT: "+result);
+			return result;
 		})
 	}
 }
