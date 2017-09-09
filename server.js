@@ -73,6 +73,17 @@ app.post("/api", function(req, res) {
   });
 });
 
+app.delete("/api/:id",function(req,res){
+	Article.remove({ _id: req.params.id }, function(err) {
+    if (err) {
+      console.log(err);
+    }
+    else {
+      res.send("Deleted from database");
+    }
+  });
+});
+
 
 // -------------------------------------------------
 

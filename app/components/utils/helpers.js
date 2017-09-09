@@ -9,7 +9,7 @@ var helper ={
 		console.log(queryURL);
 		return axios.get(queryURL).then(function(response){
 			// console.log(response);
-			var result=response.data.response.docs
+			var result=response.data.response.docs.slice(0,5)
 			// console.log("RESULT: "+result);
 			return result;
 		})
@@ -24,6 +24,9 @@ var helper ={
     			date: date, 
     			url: website 
     		});
+  	},
+  	deleteArticles:function(id){
+  		return axios.delete("/api/"+id, {_id: id});
   	}
 }
 module.exports = helper;

@@ -26,7 +26,7 @@ var Results = React.createClass({
 		          {this.props.returnResults.map(function(search,i){
 		          	return (
 		          		<div className="well" key={i}>
-		          			<h3 id="headline">{search.headline.main}</h3>
+		          			<h3 id="headline"><span className="label label-primary">{i+1}  </span>{search.headline.main}</h3>
 		          			<p id="date">{search.pub_date}</p>
 		          			<a href={search.web_url} id="website">{search.web_url}</a>
 		          			< br/>

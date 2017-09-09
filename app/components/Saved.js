@@ -1,7 +1,12 @@
 var React = require("react");
 var helpers = require("./utils/helpers");
 var Saved = React.createClass({
-
+	handleClick: function(item,event){
+		event.preventDefault();
+		helpers.deleteArticles(item._id).then(function(){
+			console.log("deleted article!");
+		}.bind(this));
+	},
 	render: function() {
 		return (
 			<div className="container">
@@ -17,9 +22,11 @@ var Saved = React.createClass({
 		          			<h3 id="headline">{search.title}</h3>
 		          			<p id="date">{search.date}</p>
 		          			<a href={search.url} id="website">{search.url}</a>
+		          			< br/>
+		          			<button className="btn btn-danger" id={search._id} onClick={this.handleClick.bind(this,search)}>Delete</button>
 		          		</div>
 		          	)
-		          }
+		          }.bind(this)
 		          )}
 			      </div>
 			    </div>
