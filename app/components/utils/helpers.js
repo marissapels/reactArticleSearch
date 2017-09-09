@@ -8,11 +8,22 @@ var helper ={
 		+ "&begin_date="+begin+"0101&end_date=" + end +"0101";
 		console.log(queryURL);
 		return axios.get(queryURL).then(function(response){
-			console.log(response);
+			// console.log(response);
 			var result=response.data.response.docs
-			console.log("RESULT: "+result);
+			// console.log("RESULT: "+result);
 			return result;
 		})
-	}
+	},
+	getArticles: function() {
+    	return axios.get("/api");
+  	},
+  	saveArticles: function(headline, date, website) {
+    	return axios.post("/api", 
+    		{ 
+    			title: headline, 
+    			date: date, 
+    			url: website 
+    		});
+  	}
 }
 module.exports = helper;

@@ -5,7 +5,7 @@ var Saved = require("./Saved");
 var helpers = require("./utils/helpers");
 var Main = React.createClass({
 	getInitialState: function(){
-		return{ searchTopic: "", searchBegin:"", searchEnd:"", results:[]};
+		return{ searchTopic: "", searchBegin:"", searchEnd:"", mainHeadline: "", mainDate: "", mainWebsite: "", results:[], saved:[] };
 	},
 	componentDidUpdate: function() {
 	    // Run the query for the address
@@ -14,6 +14,15 @@ var Main = React.createClass({
 	        this.setState({results: data})
 	    }.bind(this));
   	},
+  	componentDidMount: function() {
+		helpers.getArticles().then(function(response){
+			console.log(response);
+			if (response){
+				this.setState({saved: response.data});	
+			}
+		}.bind(this))
+	},
+
 	setTerm: function(topic, begin, end) {
 	    this.setState({ searchTopic: topic, searchBegin: begin, searchEnd: end });
 	},
@@ -30,7 +39,7 @@ var Main = React.createClass({
 					<Results returnResults={this.state.results}/>
 				</div>
 				<div className="row">
-					<Saved />
+					<Saved saved={this.state.saved}/>
 				</div>
 			</div>
 		);
